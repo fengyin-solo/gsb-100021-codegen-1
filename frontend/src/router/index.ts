@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Dashboard from '@/views/Dashboard.vue'
 const Plant = () => import('@/views/plant/index.vue')
+const PlantBoard = () => import('@/views/plant_board/index.vue')
 const Inspection = () => import('@/views/inspection/index.vue')
 const PanelClean = () => import('@/views/panel_clean/index.vue')
 const Inverter = () => import('@/views/inverter/index.vue')
@@ -25,6 +26,7 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'dashboard', component: Dashboard },
     { path: '/plant', name: 'plant', component: Plant },
+    { path: '/plant-board', name: 'plant-board', component: PlantBoard },
     { path: '/inspection', name: 'inspection', component: Inspection },
     { path: '/panel_clean', name: 'panel_clean', component: PanelClean },
     { path: '/inverter', name: 'inverter', component: Inverter },

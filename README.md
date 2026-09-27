@@ -74,3 +74,16 @@ npm run dev
   `backend/app/routers/<模块>.py`，业务规则在 `backend/app/services/<模块>.py`。
 - 列表接口统一返回 `{ items, total, page, size }`，动作接口统一返回 `{ ok, message }`。
 - 状态流转只允许在 `app/services` 里改，路由层不做业务判断。
+
+## 运维责任看板
+
+在电站档案之上派生的看板（不是档案列表的复制）：
+
+- 路由 `/plant-board`，页面在 `frontend/src/views/plant_board/index.vue`。
+- 数据来自 `GET /api/plant/owner-board`，分组与容量折算（MW）逻辑在
+  `app/services/plant.py` 的 `owner_board()` 里。
+- 按运维负责人分列，列头显示其名下电站总数、运行（并网运行）数量与总装机容量，
+  并带容量占比条便于横向比较；卡片展示电站编号、装机容量与电站状态。
+- 点击负责人（标签或列头）只保留其名下记录，再点一次恢复全部。
+- 前端每 30 秒自动刷新；读取中断时保留上一版看板，顶部给出中断说明与「重新加载」按钮，
+  首次加载失败则显示空态与重试入口。

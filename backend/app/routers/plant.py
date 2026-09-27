@@ -30,6 +30,12 @@ def list_entries(
     return PageResult(items=items, total=total, page=page, size=size)
 
 
+@router.get("/owner-board")
+def owner_board() -> dict[str, Any]:
+    """运维负责人责任看板：按负责人分组的电站卡片与运行数量，用于横向比较责任范围。"""
+    return service.owner_board()
+
+
 @router.get("/{entry_id}", response_model=dict)
 def get_entry(entry_id: int) -> dict:
     """读取单条光伏电站明细；不存在时给出可读的错误说明。"""
